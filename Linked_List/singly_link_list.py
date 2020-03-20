@@ -22,6 +22,29 @@ class Link_List:
 			
 			current_node.next_pointer = new_node
 
+	# Search a specific node......
+	def serach_node(self,d):
+		n=0
+		k=0
+		if(self.head == None):
+			print("List is Empty")
+		else:
+			current_node = self.head
+			while current_node != None:
+				n = n+1
+				if(current_node.data == d):
+					k = 1
+					break
+				else:
+					k = 0
+					current_node = current_node.next_pointer
+		if k==1:
+			print(f'present at index={n-1}')
+		else:
+			print("Not in list")
+
+
+
 	def delete_node_last(self):
 		if(self.head == None):
 			print("List is Empty")
@@ -47,22 +70,26 @@ class Link_List:
 
 if __name__ == '__main__':
 	l_list = Link_List() 
-	print("list created")
-	l_list.add_node_last(10)
-	l_list.add_node_last(20)
-	l_list.add_node_last(30)
-	l_list.add_node_last(40)
-	l_list.add_node_last(50)
 	
-	print("data addded succesfulyy")
+	while True:
+		print("1.add node at last")
+		print("2.delete node at last")
+		print("3.seach node in the list")
+		print("4.Show all data")
+		print("--------------------")
+		ch = int(input("Enter your choice:"))
+		print("----------------------")
 
-	l_list.Show_data()
-	print()
-
-	l_list.delete_node_last()
-	l_list.delete_node_last()
-
-	l_list.Show_data()
-	
-
+		if ch==1:
+			data = input("Enter the data:")
+			l_list.add_node_last(data)
+		elif ch==2:
+			l_list.delete_node_last()
+		elif ch==3:
+			data = input("Enter data to Search")
+			l_list.serach_node(data)
+		elif ch==4:
+			l_list.Show_data()
+		else:
+			print("Wrong input")
 
