@@ -1,9 +1,12 @@
+# Create a node class having two fields.......
 class Node():
 	"""Create a node"""
 	def __init__(self, data = None):
 		self.data = data
 		self.next_pointer = None
 
+
+# LinkList class to create a list
 class Link_List:
 	""" Creating List class to manage node"""
 	def __init__(self):
@@ -45,6 +48,7 @@ class Link_List:
 
 
 
+	# A Method to delete a node........ 
 	def delete_node_last(self):
 		if(self.head == None):
 			print("List is Empty")
@@ -53,8 +57,12 @@ class Link_List:
 			while current_node.next_pointer != None:
 				second_last_node = current_node
 				current_node = current_node.next_pointer
-			second_last_node.next_pointer = None	
+			if current_node.next_pointer == None:
+				self.head = None
+			else:
+				second_last_node.next_pointer = None	
 
+	# A method to diaplay the whole list
 	def Show_data(self):
 		if self.head == None:
 			print("List is empty")
@@ -81,15 +89,38 @@ if __name__ == '__main__':
 		print("----------------------")
 
 		if ch==1:
+			print("------------------------")
 			data = input("Enter the data:")
 			l_list.add_node_last(data)
+			print("--------------------")
+			print("Node added Successfully")
+			print("-----------------------")
+			print()
+		
 		elif ch==2:
+			print("-------------------")
 			l_list.delete_node_last()
+			print("Last node deleted Successfully")
+			print("--------------------------------")
+			print()
+
 		elif ch==3:
+			print("---------------------------")
 			data = input("Enter data to Search")
 			l_list.serach_node(data)
+			print("-----------------------------")
+			print()
+
 		elif ch==4:
+			print("------------------")
 			l_list.Show_data()
+			print()
+			print("-------------------")
+			print()
+
 		else:
+			print("--------------")
 			print("Wrong input")
+			print("-----------------")
+			print()
 
