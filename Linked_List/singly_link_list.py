@@ -12,7 +12,18 @@ class Link_List:
 	def __init__(self):
 		self. head = None
 
+	# add node at begin.........
+	def add_node_begin(self,value):
+		new_node = Node(value)
+		if self.head == None:
+			self.head = new_node
+		else:
+			current_node = self.head
+			self.head = new_node
+			self.head.next_pointer = current_node
+	
 
+	# add node at end.........
 	def add_node_last(self,data):
 		new_node = Node(data)
 		if(self.head == None):
@@ -24,6 +35,22 @@ class Link_List:
 				current_node = current_node.next_pointer
 			
 			current_node.next_pointer = new_node
+
+	
+	# add node after any specific node......
+	def add_node_after(self,data,value):
+		new_node = Node(data)
+		if self.head == None:
+			print("List is empty!")
+		else:
+			current_node = self.head
+			while current_node.data != value:
+				current_node = current_node.next_pointer
+
+			second_node = current_node.next_pointer
+			current_node.next_pointer = new_node
+			new_node.next_pointer = second_node
+
 
 	# Search a specific node......
 	def serach_node(self,d):
@@ -61,6 +88,9 @@ class Link_List:
 				second_last_node.next_pointer = None
 			else:
 				self.head = None
+	
+	
+	
 	# A method to diaplay the whole list
 	def Show_data(self):
 		if self.head == None:
@@ -80,10 +110,13 @@ if __name__ == '__main__':
 	
 	while True:
 		print("1.add node at last")
+		
 		print("2.delete node at last")
 		print("3.seach node in the list")
 		print("4.Show all data")
 		print("5.destroy list")
+		print("6.add node at start")
+		print("7.add after any node.")
 		print("--------------------")
 		ch = int(input("Enter your choice:"))
 		print("----------------------")
@@ -117,6 +150,21 @@ if __name__ == '__main__':
 			print()
 			print("-------------------")
 			print()
+
+		elif ch==6:
+			print("----------------")
+			a = input("Enter data:")
+			l_list.add_node_begin(a)
+			print("---------------")
+			print("data added Successfully")
+			print("------------------------")
+
+		if ch == 7:
+			print("-------------------")
+			data = input("Enter input node data:")
+			value = input("Enter node data after that:")
+			print('-------------------------------------')
+			l_list.add_node_after(data,value)
 
 		elif ch==5:
 			break
