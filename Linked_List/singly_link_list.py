@@ -57,11 +57,10 @@ class Link_List:
 			while current_node.next_pointer != None:
 				second_last_node = current_node
 				current_node = current_node.next_pointer
-			if current_node.next_pointer == None:
-				self.head = None
+			if self.head.next_pointer != None:
+				second_last_node.next_pointer = None
 			else:
-				second_last_node.next_pointer = None	
-
+				self.head = None
 	# A method to diaplay the whole list
 	def Show_data(self):
 		if self.head == None:
@@ -84,6 +83,7 @@ if __name__ == '__main__':
 		print("2.delete node at last")
 		print("3.seach node in the list")
 		print("4.Show all data")
+		print("5.destroy list")
 		print("--------------------")
 		ch = int(input("Enter your choice:"))
 		print("----------------------")
@@ -117,6 +117,9 @@ if __name__ == '__main__':
 			print()
 			print("-------------------")
 			print()
+
+		elif ch==5:
+			break
 
 		else:
 			print("--------------")
